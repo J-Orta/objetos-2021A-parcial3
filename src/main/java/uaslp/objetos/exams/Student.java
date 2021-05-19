@@ -49,10 +49,10 @@ public class Student {
     }
 
     public double getAverage() throws MissingScoreException{
-        int average;
+        double average;
         int sum=0;
 
-        for(int i=0; i< score.size(); i++){
+        for(int i=0; i < score.size(); i++){
 
             if(score.get(i).getPartial() == i + 1 ){
                 sum += score.get(i).getGrade();

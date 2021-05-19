@@ -9,42 +9,45 @@ public class Group {
     private int availability;
     private double average;
 
-    public Group(int capacity){
+    public Group(int capacity) {
         this.capacity = capacity;
         students = new LinkedList<>();
     }
 
-    public LinkedList<Student> getStudents(){
+    public LinkedList<Student> getStudents() {
         return students;
     }
 
-    public int getCapacity(){
+    public int getCapacity() {
         return capacity;
     }
 
-    public int getAvailability(){
+    public int getAvailability() {
         availability = capacity - students.size();
         return availability;
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
 
-        if(getAvailability() == 0) {
+        if (getAvailability() == 0) {
             throw new GroupIsFullException();
         }
         students.add(student);
     }
 
-    public double getAverage(){
+    public double getAverage() {
 
+        Student student;
         double sum = 0.0;
-        for(int i=0; i<students.size(); i++){
-            sum = students.get(i).getAverage();
+
+        for (int i = 0; i < students.size(); i++) {
+            student = students.get(i);
+            sum += student.getAverage();
         }
+            average = sum / students.size();
 
-        average = sum / students.size();
+            return average;
 
-        return average;
+
     }
-
 }
